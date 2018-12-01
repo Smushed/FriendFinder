@@ -24,3 +24,21 @@
 .take-survey {
     margin: 25px;
 }
+a {
+    color: grey;
+}
+a:hover {
+    font-weight: 600;
+    color: grey;
+    font-style: none;
+}
+input {
+    width: 100%;
+    border-radius: 5px;
+}
+.input-title {
+    font-weight: 500;
+}
+input:focus {
+    outline: none;
+}
