@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="./styling/style.css">
     <title>Friend Finder Survey</title>
 </head>
 
@@ -138,34 +137,44 @@
                             <option value="5">5 (Strongly Agree)</option>
                         </select>
                     </div>
-                    <button type="submit" class="text-center submit btn btn-primary">Submit</button>
+                    <button type="submit" class="btn-lg btn-block submit btn btn-primary" style="margin-bottom: 25px;">✔
+                        Submit</button>
                 </form>
             </div>
         </div>
     </div>
-    <!-- TODO Halfway through the modal, just copied and pasted it https://getbootstrap.com/docs/4.1/components/modal/ -->
-    <!-- Modal -->
-    <div class="modal fade" id="results-modal" role="dialog">
+    <!-- Modal to show friend that has been chosen -->
+    <div class="modal fade" id="friend-modal" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
+                <div class="modal-body text-center">
+                    Congrats on your new friend! 💃
+                    <h3 id="friend-name" class="text-center"></h3>
+                    <img id="friend-img" style="display: block; margin-left: auto; margin-right:auto; border-radius: 15px">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">✖ Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal For the name and photo validation -->
+    <div class="modal fade" id="validation-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p class="text-center">Please enter your Name and Link to your Picture</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">✖ Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script type="text/javascript">
         //Validating that the name and profile pic input boxes are filled out
@@ -188,29 +197,31 @@
                     picture: $(`#picture-link`).val(),
                     answers: [
                         //Parseint to ensure the values come in as a number. the "+" in front of the value didn't work
-                        parseInt($(`#question1`).val()),
-                        parseInt($(`#question2`).val()),
-                        parseInt($(`#question3`).val()),
-                        parseInt($(`#question4`).val()),
-                        parseInt($(`#question5`).val()),
-                        parseInt($(`#question6`).val()),
-                        parseInt($(`#question7`).val()),
-                        parseInt($(`#question8`).val()),
-                        parseInt($(`#question9`).val()),
-                        parseInt($(`#question10`).val())
+                        $(`#question1`).val(),
+                        $(`#question2`).val(),
+                        $(`#question3`).val(),
+                        $(`#question4`).val(),
+                        $(`#question5`).val(),
+                        $(`#question6`).val(),
+                        $(`#question7`).val(),
+                        $(`#question8`).val(),
+                        $(`#question9`).val(),
+                        $(`#question10`).val()
                     ]
                 };
 
                 //Returns a value when the post was successful
                 $.post(`/api/friends/`, userData, response => {
-                    if (response) {
-                        alert(`Your friend has been chosen`);
-                    }
+                    //Writes the friend's data to the modal
+                    $(`#friend-name`).text(response.name);
+                    $(`#friend-img`).attr(`src`, response.picture);
+                    $(`#friend-modal`).modal(`toggle`);
                 });
-                console.log(userData);
+                $(`#name-input`).val("");
+                $(`#picture-link`).val("");
             } else {
-                //TODO Make a modal here to show why the form wasn't submitted
-                console.log(`Validation is working`);
+                //Modal shows if the user didn't input a name or picture
+                $(`#validation-modal`).modal(`toggle`);
             };
         });
     </script>

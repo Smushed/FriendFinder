@@ -7,32 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" content-type="text/css" href="../public/styling/style.css">
     <title>Friend Finder Home</title>
 </head>
 
 <body>
     <!-- In line style is required as this app is only built on Node and Express -->
-    <!-- TODO Add inline styles -->
-    <div class="home-background">
-        <div class="container">
-            <div class="row">
-                <div class="home text-center col-12">
-                    <h1 class="title">Friend Finder 🕵️‍️</h1>
-                    <hr>
-                    <h2 class="prompt">Answer 10 basic questions.
-                        <br>
-                        After we will find the friend who is compatiable</h2>
-                    <a href="/survey"><button class="take-survey btn btn-primary btn-lg">Take Survey 📝</button></a>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="home text-center col-12" style="margin-top: 5%; background-color: blanchedalmond; border: 2px burlywood solid; border-radius: 15px">
+                <h1 class="title" style="margin-top: 10px;">Friend Finder 🕵️‍️</h1>
+                <hr>
+                <h2 class="prompt">Answer 10 basic questions and we will find you a new friend!
+                    <br>
+                    Your new friend has answers similiar to yours.</h2>
+                <a href="/survey"><button class="take-survey btn btn-primary btn-lg" style="margin-bottom: 10px;">Take
+                        Survey 📝</button></a>
             </div>
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="bottom-links text-center col-4">
-                    <a href="/api/friends">API Friends List</a> | <a href="#">GitHub Repo</a>
-                </div>
-                <div class="col-4"></div>
+        </div>
+        <!-- Links to the API data for the friends list and my github repo -->
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="bottom-links text-center col-4">
+                <a href="/api/friends">API Friends List</a> | <a href="https://github.com/Smushed/FriendFinder">GitHub
+                    Repo</a>
             </div>
+            <div class="col-4"></div>
         </div>
     </div>
 
