@@ -19,7 +19,7 @@ module.exports = function (app) {
         let bestMatch = {};
         //Last difference is defined outside as we need it to persist over each friend
         let lastDifference = 0;
-        friendArray.forEach(friend => {
+        friendArray.forEach((friend, friendIndex) => {
             let answerDifference = 0;
             //Iterates through the arrays that are already in the app and compares it to the users'
             //The answers array comes in as a string, converting it to a number when figuring the difference
@@ -28,8 +28,8 @@ module.exports = function (app) {
             if (answerDifference < lastDifference) {
                 bestMatch = friend;
                 //Without this else if, the first friend in the app would always be skipped
-            } else if (lastDifference === 0) {
-                bestMatch = friend
+            } else if (friendIndex === 0) {
+                bestMatch = friend;
             };
             //Updates lastDifference to the user checked checking again
             lastDifference = answerDifference;
