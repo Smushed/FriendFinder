@@ -1,19 +1,19 @@
 # FriendFinder
 
-Title: LIRI Bot<br />
+Title: FriendFinder<br />
 Developer: Kevin Flerlage<br />
 Deployment Date: 11/05/18<br />
 For: Northwestern Coding Bootcamp<br />
 
 ## Description
 
-This is a simple app which has users input their name, a photo of them and answer 10 questions about their lives. The homepage is a basic overview of the app and links the user to the survey. On the survey page, the user inputs their name, photo and answers. Once submitted the answers are compared against others who have used the app in the past. The way the app calculates the best match is the difference in the answers the user gave against previous users answers.<br />
+This is a simple app which has users input their name, a photo of them and answer 10 questions about how they think. The homepage is a basic overview of the app and links the user to the survey. On the survey page the user inputs their name, photo and answers for the questions. Once submitted the user's answers are compared against others who have used the app in the past. The way the app calculates the best match is it finds the difference between the user's answers and the previous user's answers.<br />
 
 ### Homepage
 
 ![Homepage Preview](images/homePage.PNG)<br />
 
-The homepage is simple and is more an exercise in using html get routing. From here the user can go to the survey to find a friend or view the current users in the app using the API Friends List.
+The homepage is simple and is an exercise in using express routing. From the homepage the user can go to the survey to find a friend or view the current users in the app using the API Friends List.
 
 ### Survey
 
@@ -33,4 +33,4 @@ Once the user fills out the app and presses submit their answers are compared ag
 
 ## Summary
 
-This assignment was challenging to get setup and ensure that everything is working as intended. The logic beind the app was also challenging and ensured that I was thinking of the problem in the correct order. If I was to make improvements to the app, I would make the questions reset when submitting the survey, expanding the friend selection to include location as well as have a link to social media so users matched with people can connect.
+This assignment was challenging to get setup and ensure that everything is working as intended. The logic beind the app was also challenging and ensured that I broke down the problem in the correct order. If I was to make improvements to the app, I would make the questions reset when submitting the survey, expanding the friend selection to include location as well as have a link to social media so users matched with people can connect.
